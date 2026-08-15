@@ -1,8 +1,3 @@
-Oui, dans ce cas il faut que le README présente **uniquement MNG Launcher**, tout en expliquant qu'il a été créé pour accompagner ton projet de renaissance des services FIFA 17 et que **le serveur aura son propre dépôt GitHub séparé**.
-
-Tu peux remplacer ton `README.md` par ceci :
-
-```markdown
 # 🎮 MNG Launcher — FIFA 17 Local Revival
 
 MNG Launcher est un launcher Windows développé pour accompagner un projet communautaire visant à expérimenter et restaurer localement certaines fonctionnalités en ligne de FIFA 17.
