@@ -1,76 +1,115 @@
-# 🎮 MNG Launcher — FIFA 17 Local Revival
+# 🎮 MNG Launcher — FIFA 17 Local Server
 
-MNG Launcher est un launcher Windows développé pour accompagner un projet communautaire visant à expérimenter et restaurer localement certaines fonctionnalités en ligne de FIFA 17.
+MNG Launcher est un launcher Windows développé pour accompagner le projet **FIFA 17 — Serveur Local**.
 
-> ⚠️ Ce dépôt contient uniquement le **launcher**.
+Son objectif est de simplifier le lancement, la configuration, les tests et le diagnostic de l'environnement local utilisé pour travailler sur la restauration expérimentale des services en ligne de FIFA 17.
+
+> ⚠️ Ce dépôt contient uniquement **MNG Launcher**.
 >
-> Le projet du serveur FIFA 17 sera publié séparément dans un autre dépôt GitHub.
+> Le code du serveur est disponible dans un dépôt séparé.
+
+---
+<img width="1716" height="917" alt="image" src="https://github.com/user-attachments/assets/721b2094-d664-482b-862c-7b0807472f02" />
+---
+
+# 🌐 Serveur FIFA 17
+
+Le serveur possède maintenant son propre dépôt GitHub :
+
+👉 **https://github.com/Minegamerfrance/FIFA-17---Serveur-Local**
+
+C'est sur ce dépôt que se trouve le travail concernant le serveur local, les services réseau et les recherches autour du fonctionnement des anciens services FIFA 17.
 
 ---
 
-## 🚀 Objectif
+# 🚀 Objectif de MNG Launcher
 
-MNG Launcher a pour objectif de simplifier le lancement et les tests de l'environnement local FIFA 17.
+Pendant le développement du serveur, de nombreux composants doivent être lancés et surveillés.
 
-Au lieu de devoir lancer manuellement plusieurs composants et scripts à chaque test, le launcher permet de centraliser les opérations nécessaires dans une interface unique.
+MNG Launcher a été créé pour centraliser ces opérations dans une seule interface.
 
-Le projet est actuellement en développement.
+Il permet notamment de faciliter :
 
----
+- le démarrage du serveur local ;
+- le lancement de FIFA 17 ;
+- la création d'une session locale ;
+- la configuration des chemins ;
+- l'affichage des logs ;
+- le lancement des outils de test ;
+- le diagnostic des connexions ;
+- les différents tests nécessaires au développement du serveur.
 
-## 🖥️ Fonctionnalités
-
-Le launcher permet notamment de :
-
-- configurer le chemin de FIFA 17 ;
-- configurer l'environnement serveur local ;
-- créer et utiliser une session locale ;
-- démarrer et arrêter les composants nécessaires ;
-- lancer FIFA 17 depuis le launcher ;
-- afficher les logs directement dans l'interface ;
-- tester les différents services locaux ;
-- automatiser une partie des procédures de test ;
-- faciliter le diagnostic pendant le développement.
+L'objectif est d'éviter d'avoir à lancer manuellement plusieurs scripts et programmes à chaque test.
 
 ---
 
-## 🔌 Origin LSX
+# 🖥️ Fonctionnalités
 
-Une partie importante du projet concerne la communication entre FIFA 17 et Origin.
+### ⚙️ Configuration
 
-FIFA 17 communique avec Origin via le protocole **LSX**, notamment sur :
+Le launcher permet de configurer :
 
-`TCP 127.0.0.1:3216`
+- le chemin du serveur ;
+- le chemin de `FIFA17.exe` ;
+- les informations de la session locale ;
+- différents paramètres nécessaires aux tests.
 
-Le projet contient actuellement une implémentation expérimentale :
+### ▶️ Contrôle
+
+Depuis l'interface, il est possible de :
+
+- démarrer le serveur ;
+- arrêter le serveur ;
+- lancer FIFA 17 ;
+- créer une session locale ;
+- tester les services ;
+- suivre l'état des différents composants.
+
+### 📋 Logs
+
+MNG Launcher centralise également les informations de diagnostic afin de faciliter le développement et les tests.
+
+---
+
+# 🔌 Origin LSX
+
+Une partie du launcher travaille autour de la communication entre FIFA 17 et Origin.
+
+FIFA 17 utilise notamment le protocole **LSX** pour certaines communications locales.
+
+Le projet contient une implémentation expérimentale :
 
 `OriginLsx/OriginLsxServer.cs`
 
-L'objectif est de comprendre et reproduire les échanges nécessaires à l'environnement local.
+L'objectif est de comprendre et reproduire les échanges nécessaires au fonctionnement de l'environnement local.
 
 ---
 
-## 🛠️ Technologies
+# 🛠️ Technologies
 
 MNG Launcher est principalement développé avec :
 
-- C#
-- .NET 8
-- Windows Forms
-- PowerShell
-- Origin LSX / TCP
+- **C#**
+- **.NET 8**
+- **Windows Forms**
+- **PowerShell**
+- **TCP / LSX**
 
-Le projet cible actuellement Windows x64.
+Plateforme actuellement ciblée :
+
+`Windows x64`
 
 ---
 
-## 📁 Structure du dépôt
+# 📁 Structure du projet
 
 ```text
 MNG Launcher/
+│
 ├── OriginLsx/
 │   ├── OriginLsxServer.cs
 │   └── README.md
+│
 ├── LauncherSettings.cs
 ├── MainForm.cs
 ├── Program.cs
@@ -81,81 +120,92 @@ MNG Launcher/
 └── README.md
 ```
 
-Les dossiers de compilation comme `bin/` et `obj/` ne sont volontairement pas inclus dans le dépôt.
+Les fichiers générés lors de la compilation (`bin/`, `obj/`, etc.) ne sont volontairement pas inclus dans le dépôt.
 
 ---
 
-## 🔨 Compilation
+# 🔨 Compilation
 
-Le projet nécessite le SDK **.NET 8**.
+Le projet nécessite **.NET 8 SDK**.
 
-Depuis le dossier du projet :
+Cloner le dépôt puis utiliser :
 
 ```powershell
 dotnet restore
 dotnet build
 ```
 
-Un script `build.ps1` est également présent dans le dépôt pour faciliter la compilation.
+Un script :
+
+```text
+build.ps1
+```
+
+est également disponible pour faciliter certaines opérations de compilation.
 
 ---
 
-## 🌐 Projet serveur FIFA 17
+# 🔗 Les deux projets
 
-Le serveur FIFA 17 n'est **pas contenu dans ce dépôt**.
+## 🖥️ MNG Launcher
 
-Il s'agit d'un projet séparé qui disposera de son propre dépôt GitHub.
+Ce dépôt contient :
 
-MNG Launcher est l'outil permettant de faciliter son lancement, sa configuration et les différents tests effectués avec FIFA 17.
+- l'interface du launcher ;
+- les outils de lancement ;
+- la configuration ;
+- les outils de diagnostic ;
+- l'intégration LSX côté launcher.
 
-Le lien vers le dépôt du serveur sera ajouté ici lorsqu'il sera disponible.
+## 🌐 FIFA 17 — Serveur Local
 
----
+Le serveur est développé séparément :
 
-## 🤝 Contributions
+**https://github.com/Minegamerfrance/FIFA-17---Serveur-Local**
 
-Le projet est expérimental et toujours en développement.
-
-Toute aide concernant notamment :
-
-- C# / .NET ;
-- reverse engineering et analyse de protocoles ;
-- Origin LSX ;
-- architecture réseau de FIFA 17 ;
-- amélioration du launcher ;
-- diagnostic et correction de bugs ;
-
-est la bienvenue.
-
-Vous pouvez ouvrir une **Issue** ou proposer une **Pull Request**.
+Le serveur constitue le cœur du travail de recherche et de reconstruction des services nécessaires à l'environnement FIFA 17 local.
 
 ---
 
-## ⚠️ Disclaimer
+# 🤝 Nous recherchons de l'aide
 
-Ce projet est un projet communautaire et expérimental.
+Le projet est encore expérimental et en développement actif.
 
-Il n'est ni affilié, ni approuvé, ni sponsorisé par Electronic Arts (EA).
+Toute personne ayant des connaissances dans les domaines suivants peut contribuer :
+
+- C# / .NET
+- développement réseau
+- reverse engineering
+- analyse de protocoles
+- Origin / LSX
+- services FIFA
+- debugging
+- PowerShell
+
+Vous pouvez utiliser les **Issues** pour signaler un problème ou proposer une piste.
+
+Les **Pull Requests** sont également les bienvenues.
+
+---
+
+# ⚠️ Disclaimer
+
+Ce projet est un projet communautaire, expérimental et non commercial.
+
+Il n'est **ni affilié, ni approuvé, ni sponsorisé par Electronic Arts (EA)**.
 
 Aucun fichier du jeu FIFA 17 n'est fourni dans ce dépôt.
 
-Les utilisateurs doivent posséder leurs propres fichiers et licences nécessaires.
+Les utilisateurs doivent disposer légalement de leurs propres fichiers du jeu et des éléments nécessaires à leurs expérimentations.
 
 ---
 
-## 📌 État du projet
+# 📌 État du projet
 
-🚧 **En développement actif**
+🚧 **Développement actif**
 
-MNG Launcher évolue en parallèle du travail effectué sur l'environnement serveur local FIFA 17.
+MNG Launcher évolue parallèlement au projet **FIFA 17 — Serveur Local**.
 
-De nouvelles fonctionnalités et améliorations seront ajoutées progressivement.
-```
+Le launcher sera progressivement amélioré à mesure que de nouveaux besoins apparaîtront pendant le développement et les tests du serveur.
 
-### Pour le mettre maintenant
-
-Sur ton GitHub :
-
-**`README.md` → ✏️ Edit → Ctrl+A → colle le texte → Commit changes**
-
-Et c'est même mieux de séparer les deux : **ce GitHub = MNG Launcher**, et ton prochain GitHub pourra être consacré entièrement au **serveur FIFA 17**, avec son état d'avancement, les protocoles implémentés, les logs de test utiles et surtout les problèmes sur lesquels tu cherches des contributeurs. Ton README actuel confirme déjà que le launcher travaille notamment autour de l'émulation LSX sur `127.0.0.1:3216`. 
+⭐ Si le projet vous intéresse, vous pouvez suivre les deux dépôts et contribuer aux recherches.
